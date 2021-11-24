@@ -1,6 +1,8 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
+import { IsTyping } from 'react-chat-engine';
+import { ScrollDownBar } from 'react-chat-engine';
 
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
@@ -40,7 +42,6 @@ const ChatFeed = (props) => {
       );
     });
   };
-
   if (!chat) return <div />;
 
   return (
@@ -54,6 +55,8 @@ const ChatFeed = (props) => {
       {renderMessages()}
       <div style={{ height: '100px' }} />
       <div className="message-form-container">
+      <IsTyping />
+      <ScrollDownBar chat={chat} />
         <MessageForm {...props} chatId={activeChat} />
       </div>
     </div>
