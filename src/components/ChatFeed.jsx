@@ -9,6 +9,23 @@ const ChatFeed = (props) => {
 
   const chat = chats && chats[activeChat];
 
+  
+ if(chat!= null){
+  var test = chat.people.map((person, index) =>{
+    return index
+    });
+  var online_nb = 0
+   var online = chat.people.map((person) => {
+    
+      console.log(person.person.is_online)
+      if (person.person.is_online === true){
+        online_nb = online_nb+1;
+      }
+      console.log(online_nb)
+      return online_nb
+    });
+ }
+  
   const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
     <div
       key={`read_${index}`}
@@ -37,10 +54,9 @@ const ChatFeed = (props) => {
               
               }
           </div>
-          {message.created}
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
             {renderReadReceipts(message, isMyMessage)}
-          </div>
+          </div> 
         </div>
       );
     });
@@ -48,11 +64,12 @@ const ChatFeed = (props) => {
   if (!chat) return <div />;
 
   return (
-    <div className="chat-feed">
+   <div className="chat-feed" style= { { backgroundColor: test.length === 3? '#0080ff' :  test.length ===2? '#AAAAAA' : '#FFFFFF' }}>
       <div className="chat-title-container">
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
           {chat.people.map((person) => ` ${person.person.username}`)}
+          {online_nb}
         </div>
       </div>
       {renderMessages()}
@@ -60,7 +77,7 @@ const ChatFeed = (props) => {
       <div className="message-form-container">
       <IsTyping />
       <ScrollDownBar chat={chat} />
-        <MessageForm {...props} chatId={activeChat} />
+      <MessageForm {...props} chatId={activeChat} />
       </div>
     </div>
   );
