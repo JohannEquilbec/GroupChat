@@ -8,7 +8,9 @@ const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
 
   const chat = chats && chats[activeChat];
+  console.log(props)
 
+  console.log(chat)
   
  if(chat!= null){
   var test = chat.people.map((person, index) =>{
@@ -17,11 +19,9 @@ const ChatFeed = (props) => {
   var online_nb = 0
    var online = chat.people.map((person) => {
     
-      console.log(person.person.is_online)
       if (person.person.is_online === true){
         online_nb = online_nb+1;
       }
-      console.log(online_nb)
       return online_nb
     });
  }

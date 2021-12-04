@@ -1,6 +1,9 @@
 const TheirMessage = ({ lastMessage, message }) => {
     const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
   
+    var dateMessage=message.created.substring(8, 10);
+    var dateAjd=new Date();
+    dateAjd=dateAjd.getDate();
     return (
       <div className="message-row">
         {isFirstMessageByUser && (
@@ -18,7 +21,7 @@ const TheirMessage = ({ lastMessage, message }) => {
               style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }}
             />,
             <p style={{ marginRight: '1px'}}>
-            {message.created.substring(10, 16)}
+             {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
             </p>
           ]
           : [
@@ -26,7 +29,7 @@ const TheirMessage = ({ lastMessage, message }) => {
               {message.text}
             </div>,
             <p style={{ marginRight: '1px'}}>
-            {message.created.substring(10, 16)}
+             {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
             {console.log(message.sender)}
             </p>
           ]}

@@ -1,4 +1,11 @@
 const MyMessage = ({ message }) => {
+  
+  var dateMessage=message.created.substring(8, 10);
+  var dateAjd=new Date();
+  dateAjd=dateAjd.getDate();
+
+  console.log(dateMessage, " ",dateAjd );
+  
     if (message.attachments && message.attachments.length > 0) {
       return [
         <img
@@ -8,17 +15,18 @@ const MyMessage = ({ message }) => {
           style={{ float: 'right' }}
         />,
         <p style={{ float: 'right', marginRight: '1px'}}>
-        {message.created.substring(10, 16)}
+         {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
         </p>
       ];
     }
   
     return [
-      <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white', backgroundColor: '#3B2A50' }}>
+      <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white', backgroundColor: dateMessage < dateAjd ?'#3B2A50' : '#AAAAAA' }}>
         {message.text}
       </div>,
       <p style={{ float: 'right', marginRight: '1px'}}>
-        {message.created.substring(10, 16)}
+        {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
+        {}
       </p>
     ];
   };
