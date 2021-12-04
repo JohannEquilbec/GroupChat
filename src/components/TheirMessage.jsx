@@ -22,7 +22,7 @@ const TheirMessage = ({ lastMessage, message }) => {
             </p>
           ]
           : [
-            <div className="message" style={{ float: 'left', backgroundColor: message.sender.is_Online? '#CABCDC' : '#CFFFFC', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
+            <div className="message" style={{ float: 'left', backgroundColor: message.sender.is_Online? '#AAAAAA' : '#CFFFFC', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
               {message.text}
             </div>,
             <p style={{ marginRight: '1px'}}>

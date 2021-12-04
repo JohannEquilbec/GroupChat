@@ -37,6 +37,7 @@ const ChatFeed = (props) => {
     />
   ));
 
+  
   const renderMessages = () => {
     const keys = Object.keys(messages);
 
@@ -62,14 +63,19 @@ const ChatFeed = (props) => {
     });
   };
   if (!chat) return <div />;
+<img style={{objectPosition: "10px"}} id="object-position-1" src="https://mdn.mozillademos.org/files/12668/MDN.svg" alt="MDN Logo" />
+
 
   return (
-   <div className="chat-feed" style= { { backgroundColor: test.length === 3? '#0080ff' :  test.length ===2? '#AAAAAA' : '#FFFFFF' }}>
-      <div className="chat-title-container">
+   <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid' }}>
+     
+      <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
+      <progress id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
         <div className="chat-title">{chat?.title}</div>
-        <div className="chat-subtitle">
+        <div className="chat-subtitle" >
           {chat.people.map((person) => ` ${person.person.username}`)}
           {online_nb}
+          {test.length}
         </div>
         <div className="chat-call-buttons">
           <button class="ce-call-button" type="button"><img class="ce-call-icon" alt="Call" src="call-icon.png"></img></button>
@@ -80,7 +86,6 @@ const ChatFeed = (props) => {
       <div style={{ height: '100px' }} />
       <div className="message-form-container">
       <IsTyping />
-      <ScrollDownBar chat={chat} />
       <MessageForm {...props} chatId={activeChat} />
       </div>
     </div>
