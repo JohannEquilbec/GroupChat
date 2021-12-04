@@ -22,11 +22,12 @@ const TheirMessage = ({ lastMessage, message }) => {
             </p>
           ]
           : [
-            <div className="message" style={{ float: 'left', backgroundColor: message.sender.is_Online? '#AAAAAA' : '#CFFFFC', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
+            <div className="message" style={{ float: 'left', backgroundColor: message.sender.is_online? '#FFFFFF' :  '#AAAAAA', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
               {message.text}
             </div>,
             <p style={{ marginRight: '1px'}}>
             {message.created.substring(10, 16)}
+            {console.log(message.sender)}
             </p>
           ]}
       </div>
