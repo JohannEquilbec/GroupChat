@@ -71,6 +71,10 @@ const ChatFeed = (props) => {
           {chat.people.map((person) => ` ${person.person.username}`)}
           {online_nb}
         </div>
+        <div className="chat-call-buttons">
+          <button class="ce-call-button" type="button"><img class="ce-call-icon" alt="Call" src="call-icon.png"></img></button>
+          <button class="ce-call-button" type="button"><img class="ce-call-icon" alt="Video" src="video-icon.png"></img></button>
+        </div>
       </div>
       {renderMessages()}
       <div style={{ height: '100px' }} />
