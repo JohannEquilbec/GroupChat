@@ -21,10 +21,10 @@ const TheirMessage = ({ lastMessage, message }) => {
               style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }}
             />,
             <p style={{ marginRight: '1px'}}>
-             {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
+             {dateMessage >= dateAjd ? message.created.substring(10, 16) : dateMessage=message.created.substring(5, 10) }
             </p>,
             <br />,
-            <p> {message.text} likes</p>
+            <p> {message.text}&nbsp;likes</p>
             , console.log(message.text)
           ]
           : [

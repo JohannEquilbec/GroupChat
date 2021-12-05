@@ -44,7 +44,7 @@ const ChatFeed = (props) => {
       text = 1;
     }
     else {
-      text =Number(message.text) + 1;
+      text = Number(message.text) + 1;
     }
     editMessage(props, chat.id, message.id,  { text });
    // deleteMessage(props, chat.id, message.id);
@@ -66,7 +66,7 @@ const ChatFeed = (props) => {
               ? <MyMessage message={message} />
               : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
               }
-              {message.attachments.length > 0 ? <button onClick={() => handleClick( message)} type="button"> LIKE !</button> : console.log ()}
+              {message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()}
               
           </div>
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
@@ -85,7 +85,7 @@ const ChatFeed = (props) => {
       <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
       <progress id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
         <div className="chat-title">{chat?.title}</div>
-        <div className="chat-subtitle" >
+        <div className="chat-subtitle">
           {chat.people.map((person) => ` ${person.person.username}`)}
           {online_nb}
           {test.length}
