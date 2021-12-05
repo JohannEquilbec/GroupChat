@@ -22,7 +22,10 @@ const TheirMessage = ({ lastMessage, message }) => {
             />,
             <p style={{ marginRight: '1px'}}>
              {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
-            </p>
+            </p>,
+            <br />,
+            <p> {message.text} likes</p>
+            , console.log(message.text)
           ]
           : [
             <div className="message" style={{ float: 'left', backgroundColor: message.sender.is_online? '#FFFFFF' :  '#AAAAAA', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
@@ -30,7 +33,8 @@ const TheirMessage = ({ lastMessage, message }) => {
             </div>,
             <p style={{ marginRight: '1px'}}>
              {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
-            {console.log(message.sender)}
+            {//console.log(message.sender)
+            }
             </p>
           ]}
       </div>

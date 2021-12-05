@@ -1,17 +1,17 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
-import { IsTyping } from 'react-chat-engine';
+import { IsTyping,editMessage, deleteMessage } from 'react-chat-engine';
 import { ScrollDownBar } from 'react-chat-engine';
 
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
 
   const chat = chats && chats[activeChat];
-  console.log(props)
+ // console.log(props)
 
-  console.log(chat)
-  
+// console.log(chat)  
+
  if(chat!= null){
   var test = chat.people.map((person, index) =>{
     return index
@@ -38,6 +38,19 @@ const ChatFeed = (props) => {
   ));
 
   
+  const handleClick = (message) => {
+    var text = 0;
+    if (message.text === ""){
+      text = 1;
+    }
+    else {
+      text =Number(message.text) + 1;
+    }
+    editMessage(props, chat.id, message.id,  { text });
+   // deleteMessage(props, chat.id, message.id);
+   //window.location.reload(false);
+  }
+
   const renderMessages = () => {
     const keys = Object.keys(messages);
 
@@ -52,8 +65,9 @@ const ChatFeed = (props) => {
             {isMyMessage
               ? <MyMessage message={message} />
               : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
-              
               }
+              {message.attachments.length > 0 ? <button onClick={() => handleClick( message)} type="button"> LIKE !</button> : console.log ()}
+              
           </div>
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
             {renderReadReceipts(message, isMyMessage)}
@@ -68,7 +82,6 @@ const ChatFeed = (props) => {
 
   return (
    <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid' }}>
-     
       <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
       <progress id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
         <div className="chat-title">{chat?.title}</div>
