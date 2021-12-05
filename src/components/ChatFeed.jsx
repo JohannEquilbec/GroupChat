@@ -83,7 +83,7 @@ const ChatFeed = (props) => {
   return (
    <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid', borderRadius: '30px' }}>
       <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
-      <progress id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
+        <progress id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
           {chat.people.map((person) => ` ${person.person.username}`)}
@@ -93,7 +93,9 @@ const ChatFeed = (props) => {
           <button class="ce-call-button" type="button"><img class="ce-call-icon" alt="Video" src="video-icon.png"></img></button>
         </div>
       </div>
-      {renderMessages()}
+      <div className="chat-messages-container">
+        {renderMessages()}
+      </div>
       <div style={{ height: '100px' }} />
       <div className="message-form-container">
       <IsTyping />
