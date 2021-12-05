@@ -1,8 +1,8 @@
 const MyMessage = ({ message }) => {
 
-  var dateMessage=message.created.substring(8, 10);
-  var dateAjd=new Date();
-  dateAjd=dateAjd.getDate();
+  var dateMessage = message.created.substring(8, 10);
+  var dateAjd = new Date();
+  dateAjd = dateAjd.getDate();
   
     if (message.attachments && message.attachments.length > 0) {
       return [
@@ -15,7 +15,7 @@ const MyMessage = ({ message }) => {
         <p style={{ float: 'right', marginRight: '1px'}}>
          {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
         </p>,
-        <p> {message.text} likes</p>
+        <p> {message.text}&nbsp;likes</p>
       ];
     }
   
