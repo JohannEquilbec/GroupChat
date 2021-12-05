@@ -15,9 +15,9 @@
   }
   
   .ce-active-chat-card {
-    background-color: #cabcdc !important;
-    border: 4px solid #cabcdc !important;
-    border-radius: 0px !important;
+    background-color: #94a7da !important;
+    border: 4px solid #d7d9e4 !important;
+    border-radius: 50px !important;
   }
   
   .ce-chat-subtitle-text {
@@ -25,24 +25,28 @@
   }
   
   .ce-chat-form-container {
-    padding-bottom: 20px !important;
+    padding-bottom: 25px !important;
+    background-color: #94a7da !important;
+    border-radius: 30px !important;
   }
   
   .ce-text-input {
-    border-radius: 6px !important;
-    border: 1px solid #3b2a50 !important;
+    border-radius: 30px !important;
+    background-color: #94a7da !important;
+    border: 2px solid #3b2a50 !important;
   }
   
   .ce-primary-button {
-    border-radius: 6px !important;
-    background-color: #7554a0 !important;
+    border-radius: 30px !important;
+    background-color: #356ab9 !important;
     position: relative;
     bottom: 1px;
   }
   
   .ce-call-button {
-    border-radius: 6px !important;
-    background-color: #7554a0 !important;
+    border-radius: 30px !important;
+    background-color: #356ab9 !important;
+    position: relative;
     margin-left: 15px;
     width: 60px;
     line-height: 40px;
@@ -51,6 +55,9 @@
   .ce-call-icon {
     width: 22px;
     height: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block !important;
   }
 
   .ce-danger-button {
@@ -60,6 +67,17 @@
   
   .ce-settings {
     background-color: rgb(240, 240, 240) !important;
+  }
+
+  .ce-section-title-container{
+    
+    background-color: #94a7da !important;
+    border-radius: 22px !important;
+  } 
+ 
+  #ce-options-drop-down{
+    background-color: #94a7da !important;
+    border-radius: 22px !important;
   }
   
   .ce-autocomplete-input {
@@ -75,37 +93,51 @@
   
   .ce-chat-settings-container {
     padding-top: 12px !important;
+    
   }
+
+  .ce-photo-section {
+    padding-top: 12px !important;
+    
+  }
+  
   
   .ce-chat-avatars-row {
     display: none !important;
   }
   
+  .ce-pesone-tex{
+    background-color: rgb(126, 51, 51) !important;
+  }
   /* CUSTOM FEED */
   
   .chat-feed {
-    height: 100%;
-    width: 100%;
-    overflow: scroll;
+    height: 93%;
+    width: calc(100% );
+    overflow-y: auto; 
+    overflow-x: hidden;
     background-color: rgb(240, 240, 240);
+    border-radius: 30px;
   }
   
   .chat-title-container {
-    width: calc(100% - 36px);
+    width: calc(100% );
     padding: 18px;
+    border-radius: 30px !important;
+    /*position: absolute; /* pas sur pour le absolute ici*/
     text-align: center;
-    position: absolute;
+   
     background-color: rgb(240, 240, 240);
   }
   
   .chat-title {
-    color: #7554a0;
+    color: #27272b;
     font-weight: 800;
     font-size: 24px;
   }
   
   .chat-subtitle {
-    color: #7554a0;
+    color: #6a6a72;
     font-weight: 600;
     font-size: 12px;
     padding-top: 4px;
@@ -113,7 +145,7 @@
 
   .chat-call-buttons{
     text-align:center;
-    position: absolute;
+    /*position: absolute; /* pas sur pour le absolute ici*/
     top: 22px;
     left: auto; right: 30px;
     /*the same margin which is every button have, it is for small screen, and if you have many buttons.*/
@@ -132,9 +164,9 @@
   }
   
   .message-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     color: white;
     text-align: center;
     background-repeat: no-repeat;
@@ -145,7 +177,7 @@
   .message {
     padding: 12px;
     font-size: 16px;
-    border-radius: 6px;
+    border-radius: 15px;
     max-width: 60%;
   }
   
@@ -163,13 +195,13 @@
   
   .read-receipts {
     position: relative;
-    bottom: 6px;
+    bottom: 2px;
   }
   
   .read-receipt {
-    width: 13px;
-    height: 13px;
-    border-radius: 13px;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
     margin: 1.5px;
     background-repeat: no-repeat;
     background-position: center;
@@ -178,16 +210,19 @@
   
   .message-form-container {
     position: absolute;
+    margin-left: auto;
+    margin-right: auto;
     bottom: 0px;
-    width: calc(100% - 36px);
-    padding: 18px;
-    background-color: rgb(240, 240, 240);
+    border-radius: 15px;
+    width: calc(100%);
+    padding: 10px;
+    background-color: #94a7da;
   }
   
   .message-form {
     overflow: hidden;
-    border-radius: 6px;
-    border: 1px solid #3b2a50;
+    border-radius: 30px;
+    border: 2px solid #3b2a50;
     background-color: white;
   }
   
