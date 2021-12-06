@@ -25,6 +25,10 @@ const ChatFeed = (props) => {
       return online_nb
     });
  }
+
+ const readReceipts = (message) => chat.people.map((person, index) =>
+  person.last_read = message.id 
+);
   
   const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
     <div
@@ -70,6 +74,7 @@ const ChatFeed = (props) => {
               
           </div>
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
+            
             {renderReadReceipts(message, isMyMessage)}
           </div> 
         </div>
