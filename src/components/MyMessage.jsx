@@ -1,8 +1,13 @@
 const MyMessage = ({ message }) => {
 
-  var dateMessage = message.created.substring(8, 10);
+  if (message.created.substring(8, 9)=== "0"){
+    var dateMessage = Number(message.created.substring(9, 10));
+  }
+  else {
+    dateMessage = Number(message.created.substring(8, 10));
+  }
   var dateAjd = new Date();
-  dateAjd = dateAjd.getDate();
+  dateAjd = Number(dateAjd.getDate());
   
     if (message.attachments && message.attachments.length > 0) {
       return [
@@ -13,14 +18,15 @@ const MyMessage = ({ message }) => {
           style={{ float: 'right' }}
         />,
         <p style={{ float: 'right', marginRight: '1px'}}>
-         {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
+         {dateMessage = dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
         </p>,
         <p> {message.text}&nbsp;likes</p>
       ];
     }
   
     return [
-      <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white', backgroundColor: dateMessage < dateAjd ?'#3B2A50' : '#AAAAAA' }}>
+      <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white',
+       backgroundColor: dateMessage === dateAjd ?'#3B2A50' : dateMessage+1 === dateAjd ? '#AAAAAA' :  '#AFFFFA'}}>
         {message.text}
       </div>,
       <p style={{ float: 'right', marginRight: '1px'}}>

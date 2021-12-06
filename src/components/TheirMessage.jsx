@@ -1,9 +1,16 @@
 const TheirMessage = ({ lastMessage, message }) => {
     const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
-  
-    var dateMessage=message.created.substring(8, 10);
-    var dateAjd=new Date();
-    dateAjd=dateAjd.getDate();
+
+    
+  if (message.created.substring(8, 9)=== "0"){
+    var dateMessage = Number(message.created.substring(9, 10));
+  }
+  else {
+    var dateMessage = Number(message.created.substring(8, 10));
+  }
+  var dateAjd = new Date();
+  dateAjd = Number(dateAjd.getDate());
+
     return (
       <div className="message-row">
         {isFirstMessageByUser && (
@@ -25,10 +32,10 @@ const TheirMessage = ({ lastMessage, message }) => {
             </p>,
             <br />,
             <p> {message.text}&nbsp;likes</p>
-            , console.log(message.text)
           ]
           : [
-            <div className="message" style={{ float: 'left', backgroundColor: message.sender.is_online? '#FFFFFF' :  '#AAAAAA', marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
+            <div className="message" style={{ float: 'left', backgroundColor: dateMessage === dateAjd ?'#3B2A50' : dateMessage+1 === dateAjd ? '#AAAAAA' :  '#AFFFFA'
+            , marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
               {message.text}
             </div>,
             <p style={{ marginRight: '1px'}}>
