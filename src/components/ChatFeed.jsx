@@ -8,7 +8,7 @@ const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
 
   const chat = chats && chats[activeChat];
- // console.log(props)
+ console.log(props)
 
 // console.log(chat)  
 
@@ -27,7 +27,9 @@ const ChatFeed = (props) => {
  }
 
  const readReceipts = (message) => chat.people.map((person, index) =>
-  person.last_read = message.id 
+ {if (person.person.is_online === true && chat)
+ {person.last_read = chat.last_message.id }
+ }
 );
   
   const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
@@ -74,7 +76,7 @@ const ChatFeed = (props) => {
               
           </div>
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
-            
+            {readReceipts(message)}
             {renderReadReceipts(message, isMyMessage)}
           </div> 
         </div>
