@@ -6,6 +6,20 @@
     letter-spacing: 0.5px;
   }
   
+  :root {
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+  }
+
+  .mover {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+  }
   .ce-chat-list {
     background-color: #c4dcff !important;
   }

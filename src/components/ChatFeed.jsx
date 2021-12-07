@@ -1,18 +1,26 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
-import { IsTyping,editMessage, deleteMessage } from 'react-chat-engine';
-import { ScrollDownBar } from 'react-chat-engine';
+import { IsTyping,editMessage, getMessages } from 'react-chat-engine';
 
 const ChatFeed = (props) => {
-  const { chats, activeChat, userName, messages } = props;
+  var { chats, activeChat, userName, messages } = props;
 
   const chat = chats && chats[activeChat];
  console.log(props)
+ //console.log(chats)
 
-// console.log(chat)  
+ let root = document.documentElement;
+
+root.addEventListener("mousemove", e => {
+root.style.setProperty('--mouse-x', e.clientX - 480 + "px");
+root.style.setProperty('--mouse-y', e.clientY + "px");
+console.log(e.clientY, e.clientX);
+});
 
  if(chat!= null){
+  //setCurrentChat(activeChat);
+  //setActiveChat(chat.id);
   var test = chat.people.map((person, index) =>{
     return index
     });
@@ -24,13 +32,19 @@ const ChatFeed = (props) => {
       }
       return online_nb
     });
+   getMessages(props, chat.id);    
+   //console.log("message", messages);
+   //console.log("apres" , props)
+   
+   // setActiveChat(chat.id);
  }
+ console.log(online);
 
  const readReceipts = (message) => chat.people.map((person, index) =>
- {if (person.person.is_online === true && chat)
- {person.last_read = chat.last_message.id }
- }
-);
+    {if (person.person.is_online === true && chat)
+    {person.last_read = chat.last_message.id }
+    return 0
+    });
   
   const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
     <div
@@ -108,6 +122,7 @@ const ChatFeed = (props) => {
       <IsTyping />
       <MessageForm {...props} chatId={activeChat} />
       </div>
+      <div class="mover"></div>
     </div>
   );
 };

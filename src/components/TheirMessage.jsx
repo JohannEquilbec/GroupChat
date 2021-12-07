@@ -6,7 +6,7 @@ const TheirMessage = ({ lastMessage, message }) => {
     var dateMessage = Number(message.created.substring(9, 10));
   }
   else {
-    var dateMessage = Number(message.created.substring(8, 10));
+     dateMessage = Number(message.created.substring(8, 10));
   }
   var dateAjd = new Date();
   dateAjd = Number(dateAjd.getDate());
