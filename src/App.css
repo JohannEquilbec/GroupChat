@@ -11,11 +11,15 @@
     --mouse-y: 0px;
     --mouse-x2: 0px;
     --mouse-y2: 0px;
+    --mouse-x3: 0px;
+    --mouse-y3: 0px;
 
     --width1: 0px;
     --height1: 0px;
     --width2: 0px;
     --height2: 0px;
+    --width3: 0px;
+    --height3: 0px;
   }
 
 
@@ -23,7 +27,7 @@
     width: var(--width1);
     height: var(--height1);
     border-radius: 50%;
-    background: blue;
+    background: red;
     position: absolute;
     left: var(--mouse-x);
     top: var(--mouse-y);
@@ -37,6 +41,16 @@
     position: absolute;
     left: var(--mouse-x2);
     top: var(--mouse-y2);
+  }
+
+  .mover3 {
+    width: var(--width3);
+    height: var(--height3);
+    border-radius: 50%;
+    background: palevioletred;
+    position: absolute;
+    left: var(--mouse-x3);
+    top: var(--mouse-y3);
   }
 
   .ce-chat-list {

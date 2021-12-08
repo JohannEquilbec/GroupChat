@@ -1,7 +1,7 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
-import { IsTyping,editMessage , sendMessage } from 'react-chat-engine';
+import { IsTyping,editMessage , sendMessage, deleteMessage } from 'react-chat-engine';
 
 const ChatFeed = (props) => {
   var {creds, chats, activeChat, userName, messages } = props;
@@ -89,6 +89,10 @@ const ChatFeed = (props) => {
     console.log("video");
   }
 
+
+  var dateAjd = new Date();
+  var dateMin = Number(dateAjd.getMinutes());
+
   const renderMessages = () => {
     const keys = Object.keys(messages);
 
@@ -107,18 +111,26 @@ const ChatFeed = (props) => {
               }
               {message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()}
           </div> :
-          isMyMessage?
+          message.sender.username==="Johann" && Number(message.created.substring(14, 16)) === dateMin?
            [
             root.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
             root.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
             root.style.setProperty('--width1', 20 + "px"),
             root.style.setProperty('--height1', 20 + "px")
-           ] : [
+           ] : message.sender.username==="Nicolas" && Number(message.created.substring(14, 16)) === dateMin? [
             root.style.setProperty('--mouse-x2', message.text.substring(3, 7) - 480  + "px"),
             root.style.setProperty('--mouse-y2',  message.text.substring(11, 16) + "px"),
             root.style.setProperty('--width2', 20 + "px"),
             root.style.setProperty('--height2', 20 + "px")
            ]
+           : message.sender.username==="Camille" && Number(message.created.substring(14, 16)) === dateMin ?
+           [
+            root.style.setProperty('--mouse-x3', message.text.substring(3, 7) - 480  + "px"),
+            root.style.setProperty('--mouse-y3',  message.text.substring(11, 16) + "px"),
+            root.style.setProperty('--width3', 20 + "px"),
+            root.style.setProperty('--height3', 20 + "px")
+           ]
+           : null//deleteMessage(props, chat.id, message.id) 
         }
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
             {readReceipts(message)}
@@ -135,12 +147,14 @@ const ChatFeed = (props) => {
   return (
    <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid', borderRadius: '30px' }} onKeyPress={(e) => handler(e)}>
   
-     { root.style.setProperty('--mouse-x', null),
-       root.style.setProperty('--mouse-y',null),
-       root.style.setProperty('--width1', 0 + "px"),
+     { //root.style.setProperty('--mouse-x', null),
+       //root.style.setProperty('--mouse-y',null),
+       root.style.setProperty('--width1' , 0 + "px"),
        root.style.setProperty('--height1', 0 + "px"),
-       root.style.setProperty('--width2', 0 + "px"),
-       root.style.setProperty('--height2', 0 + "px")}
+       root.style.setProperty('--width2' , 0 + "px"),
+       root.style.setProperty('--height2', 0 + "px"),
+       root.style.setProperty('--width3' , 0 + "px"),
+       root.style.setProperty('--height3', 0 + "px")}
 
       <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
         <progress color="red" id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
@@ -161,8 +175,9 @@ const ChatFeed = (props) => {
       <IsTyping />
       <MessageForm {...props} chatId={activeChat} />
       </div>
-      <div className="mover"  ></div>
-      <div className="mover2"  ></div>
+      <div class="mover "></div>
+      <div class="mover2"></div>
+      <div class="mover3"></div>
     </div>
   );
 };
