@@ -31,7 +31,6 @@ const MyMessage = ({ message }) => {
       </div>,
       <p style={{ float: 'right', marginRight: '1px'}}>
         {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
-        {}
       </p>
     ];
   };

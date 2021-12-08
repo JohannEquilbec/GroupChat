@@ -1,22 +1,29 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
-import { IsTyping,editMessage, getMessages } from 'react-chat-engine';
+import { IsTyping,editMessage, getMessages , sendMessage } from 'react-chat-engine';
+import React, { useState } from 'react';
 
 const ChatFeed = (props) => {
-  var { chats, activeChat, userName, messages } = props;
+  var {creds, chats, activeChat, userName, messages } = props;
+  const [state, setState] = useState('');
 
   const chat = chats && chats[activeChat];
- console.log(props)
+ //console.log(props)
  //console.log(chats)
 
  let root = document.documentElement;
 
-root.addEventListener("mousemove", e => {
-root.style.setProperty('--mouse-x', e.clientX - 480 + "px");
-root.style.setProperty('--mouse-y', e.clientY + "px");
-console.log(e.clientY, e.clientX);
-});
+ let root2 = document.documentElement;
+
+ const handler = (event) => {
+     if(event.key === 'a'){
+      console.log(event.key);
+      aDown = true ;
+     }
+  };
+
+  var aDown = false;
 
  if(chat!= null){
   //setCurrentChat(activeChat);
@@ -32,18 +39,23 @@ console.log(e.clientY, e.clientX);
       }
       return online_nb
     });
-   getMessages(props, chat.id);    
-   //console.log("message", messages);
-   //console.log("apres" , props)
-   
-   // setActiveChat(chat.id);
+  
+  root.addEventListener("mousemove", e => {
+  //root.style.setProperty('--mouse-x', e.clientX - 480 + "px");
+  //root.style.setProperty('--mouse-y', e.clientY + "px");
+  //console.log(e.clientY, e.clientX);
+  if (aDown === true){
+  var text = "x : " + e.clientX + " y : " + e.clientY
+  sendMessage(creds, chat.id, { text });
+  aDown = false ;
+  }
+  });
  }
- console.log(online);
 
  const readReceipts = (message) => chat.people.map((person, index) =>
     {if (person.person.is_online === true && chat)
     {person.last_read = chat.last_message.id }
-    return 0
+    return
     });
   
   const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
@@ -83,8 +95,18 @@ console.log(e.clientY, e.clientX);
         <div key={`msg_${index}`} style={{ width: '100%' }}>
           <div className="message-block">
             {isMyMessage
-              ? <MyMessage message={message} />
-              : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
+              ? message.text.substring(0, 3) != "x :" ? <MyMessage message={message} /> : [
+                root.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
+                root.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
+                console.log("y" ,message.text.substring(11, 16)),
+                console.log("x" ,message.text.substring(3, 7))
+              ]
+              : message.text.substring(0, 3) != "x :" ?  <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />:[
+                root2.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
+                root2.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
+                console.log("y" ,message.text.substring(11, 16)),
+                console.log("x" ,message.text.substring(3, 7))
+              ]
               }
               {message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()}
               
@@ -102,7 +124,7 @@ console.log(e.clientY, e.clientX);
 
 
   return (
-   <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid', borderRadius: '30px' }}>
+   <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid', borderRadius: '30px' }} onKeyPress={(e) => handler(e)}>
       <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
         <progress color="red" id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
         <div className="chat-title">{chat?.title}</div>
@@ -122,7 +144,8 @@ console.log(e.clientY, e.clientX);
       <IsTyping />
       <MessageForm {...props} chatId={activeChat} />
       </div>
-      <div class="mover"></div>
+      <div class="mover"  ></div>
+      <div class="mover2"  ></div>
     </div>
   );
 };
