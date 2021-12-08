@@ -9,30 +9,31 @@
   :root {
     --mouse-x: 0px;
     --mouse-y: 0px;
-    --color : blue
-  }
-
-  :root2 {
     --mouse-x2: 0px;
     --mouse-y2: 0px;
-    --color2 : red
+
+    --width1: 0px;
+    --height1: 0px;
+    --width2: 0px;
+    --height2: 0px;
   }
 
+
   .mover {
-    width: 20px;
-    height: 20px;
+    width: var(--width1);
+    height: var(--height1);
     border-radius: 50%;
-    background: var(--color);
+    background: blue;
     position: absolute;
     left: var(--mouse-x);
     top: var(--mouse-y);
   }
 
   .mover2 {
-    width: 20px;
-    height: 20px;
+    width: var(--width2);
+    height: var(--height2);
     border-radius: 50%;
-    background: var(--color2);
+    background: green;
     position: absolute;
     left: var(--mouse-x2);
     top: var(--mouse-y2);
