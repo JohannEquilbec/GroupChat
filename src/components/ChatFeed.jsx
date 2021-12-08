@@ -17,7 +17,7 @@ const ChatFeed = (props) => {
  let root2 = document.documentElement;
 
  const handler = (event) => {
-     if(event.key === 'a'){
+     if(event.key === '-'){
       console.log(event.key);
       aDown = true ;
      }
@@ -93,24 +93,29 @@ const ChatFeed = (props) => {
 
       return (
         <div key={`msg_${index}`} style={{ width: '100%' }}>
+          {message.text.substring(0, 3) != "x :" ? 
           <div className="message-block">
             {isMyMessage
               ? message.text.substring(0, 3) != "x :" ? <MyMessage message={message} /> : [
-                root.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
-                root.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
-                console.log("y" ,message.text.substring(11, 16)),
-                console.log("x" ,message.text.substring(3, 7))
+                
               ]
               : message.text.substring(0, 3) != "x :" ?  <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />:[
-                root2.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
-                root2.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
-                console.log("y" ,message.text.substring(11, 16)),
-                console.log("x" ,message.text.substring(3, 7))
+                
               ]
               }
               {message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()}
               
-          </div>
+          </div> : [
+          root.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
+          root.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
+          console.log("y" ,message.text.substring(11, 16)),
+          console.log("x" ,message.text.substring(3, 7)),
+          root2.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
+          root2.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
+          console.log("y" ,message.text.substring(11, 16)),
+          console.log("x" ,message.text.substring(3, 7))
+        ]
+         } 
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
             {readReceipts(message)}
             {renderReadReceipts(message, isMyMessage)}
