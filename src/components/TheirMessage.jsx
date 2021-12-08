@@ -34,7 +34,7 @@ const TheirMessage = ({ lastMessage, message }) => {
             <p> {message.text}&nbsp;likes</p>
           ]
           : [
-            <div className="message" style={{ float: 'left', backgroundColor: dateMessage === dateAjd ?'#3B2A50' : dateMessage+1 === dateAjd ? '#AAAAAA' :  '#AFFFFA'
+            <div className="message" style={{ float: 'left', backgroundColor: dateMessage === dateAjd ?'#afc5a4' : dateMessage+1 === dateAjd ? '#7eaa6b' :  '#488f31'
             , marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
               {message.text}
             </div>,

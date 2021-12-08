@@ -26,7 +26,7 @@ const MyMessage = ({ message }) => {
   
     return [
       <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white',
-       backgroundColor: dateMessage === dateAjd ?'#3B2A50' : dateMessage+1 === dateAjd ? '#AAAAAA' :  '#AFFFFA'}}>
+       backgroundColor: dateMessage === dateAjd ?'#85aac8' : dateMessage+1 === dateAjd ? '#4c7999' :  '#004c6d'}}>
         {message.text}
       </div>,
       <p style={{ float: 'right', marginRight: '1px'}}>
