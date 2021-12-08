@@ -81,6 +81,14 @@ const ChatFeed = (props) => {
    //window.location.reload(false);
   }
 
+  const startCall = () => {
+    console.log("call");
+  }
+
+  const startVideoCall = () => {
+    console.log("video");
+  }
+
   const renderMessages = () => {
     const keys = Object.keys(messages);
 
@@ -141,8 +149,8 @@ const ChatFeed = (props) => {
           {chat.people.map((person) => ` ${person.person.username}`)}
         </div>
         <div className="chat-call-buttons">
-          <button class="ce-call-button" type="button"><img class="ce-call-icon" alt="Call" src="call-icon.png"></img></button>
-          <button class="ce-call-button" type="button"><img class="ce-call-icon" alt="Video" src="video-icon.png"></img></button>
+          <button className="ce-call-button" type="button" onClick={() => startCall()}><img className="ce-call-icon" alt="Call" src="call-icon.png"></img></button>
+          <button className="ce-call-button" type="button" onClick={() => startVideoCall()}><img className="ce-call-icon" alt="Video" src="video-icon.png"></img></button>
         </div>
       </div>
       <div className="chat-messages-container">
@@ -153,10 +161,15 @@ const ChatFeed = (props) => {
       <IsTyping />
       <MessageForm {...props} chatId={activeChat} />
       </div>
-      <div class="mover"  ></div>
-      <div class="mover2"  ></div>
+      <div className="mover"  ></div>
+      <div className="mover2"  ></div>
     </div>
   );
 };
 
 export default ChatFeed;
+
+/*let call_buttons = ReactDOM.findDOMNode(document.getElementById('root')).getElementsByClassName('ce-call-button');/*document.querySelectorAll('.ce-call-button');
+console.log(call_buttons);
+call_buttons[0].onclick = function(){console.log("call");};
+call_buttons[1].onclick = function(){console.log("video");};*/
