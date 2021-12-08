@@ -145,6 +145,10 @@
     background-color: rgb(126, 51, 51) !important;
   }
   /* CUSTOM FEED */
+
+  .ce-chat-feed-column{
+    background-color: #c4dcff;
+  }
   
   .chat-feed {
     height: 93%;

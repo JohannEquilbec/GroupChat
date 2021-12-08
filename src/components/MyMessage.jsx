@@ -18,7 +18,7 @@ const MyMessage = ({ message }) => {
           style={{ float: 'right' }}
         />,
         <p style={{ float: 'right', marginRight: '1px'}}>
-         {dateMessage = dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
+         {dateMessage = dateAjd ? [Number(message.created.substring(10, 13) )+1,message.created.substring(13, 16) ]:dateMessage=message.created.substring(5, 10) }
         </p>,
         <p> {message.text}&nbsp;likes</p>
       ];
@@ -26,12 +26,12 @@ const MyMessage = ({ message }) => {
   
     return [
       <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white',
-       backgroundColor: dateMessage === dateAjd ?'#85aac8' : dateMessage+1 === dateAjd ? '#4c7999' :  '#004c6d'}}>
+       backgroundColor: dateMessage === dateAjd ?'#004c6d' : dateMessage+1 === dateAjd ? '#4c7999' :  '#85aac8'}}>
         {message.text}
       </div>,
       <p style={{ float: 'right', marginRight: '1px'}}>
-        {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
-      </p>
+        {dateMessage >= dateAjd ? [Number(message.created.substring(10, 13) )+1,message.created.substring(13, 16) ] :dateMessage=message.created.substring(5, 10) }
+      </p>   
     ];
   };
   

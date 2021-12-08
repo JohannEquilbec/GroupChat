@@ -34,12 +34,12 @@ const TheirMessage = ({ lastMessage, message }) => {
             <p> {message.text}&nbsp;likes</p>
           ]
           : [
-            <div className="message" style={{ float: 'left', backgroundColor: dateMessage === dateAjd ?'#afc5a4' : dateMessage+1 === dateAjd ? '#7eaa6b' :  '#488f31'
+            <div className="message" style={{ float: 'left', backgroundColor: dateMessage === dateAjd ?'#488f31' : dateMessage+1 === dateAjd ? '#7eaa6b' :  '#afc5a4'
             , marginLeft: isFirstMessageByUser ? '4px' : '48px' }}>
               {message.text}
             </div>,
             <p style={{ marginRight: '1px'}}>
-             {dateMessage >= dateAjd ? message.created.substring(10, 16) :dateMessage=message.created.substring(5, 10) }
+             {dateMessage >= dateAjd ? [Number(message.created.substring(10, 13) )+1,message.created.substring(13, 16) ] :dateMessage=message.created.substring(5, 10) }
             {//console.log(message.sender)
             }
             </p>

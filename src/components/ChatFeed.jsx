@@ -1,12 +1,10 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
-import { IsTyping,editMessage, getMessages , sendMessage } from 'react-chat-engine';
-import React, { useState } from 'react';
+import { IsTyping,editMessage , sendMessage } from 'react-chat-engine';
 
 const ChatFeed = (props) => {
   var {creds, chats, activeChat, userName, messages } = props;
-  const [state, setState] = useState('');
 
   const chat = chats && chats[activeChat];
  //console.log(props)
@@ -93,27 +91,23 @@ const ChatFeed = (props) => {
 
       return (
         <div key={`msg_${index}`} style={{ width: '100%' }}>
-          {message.text.substring(0, 3) != "x :" ? 
+          {message.text.substring(0, 3) !== "x :" ? 
           <div className="message-block">
             {isMyMessage
-              ? message.text.substring(0, 3) != "x :" ? <MyMessage message={message} /> : [
-                
-              ]
-              : message.text.substring(0, 3) != "x :" ?  <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />:[
-                
-              ]
+              ? <MyMessage message={message} /> 
+              : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
               }
               {message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()}
               
           </div> : [
           root.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
           root.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
-          console.log("y" ,message.text.substring(11, 16)),
-          console.log("x" ,message.text.substring(3, 7)),
-          root2.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
-          root2.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
-          console.log("y" ,message.text.substring(11, 16)),
-          console.log("x" ,message.text.substring(3, 7))
+        //  console.log("y" ,message.text.substring(11, 16)),
+        //  console.log("x" ,message.text.substring(3, 7)),
+        //  root2.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
+        //  root2.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
+        //  console.log("y" ,message.text.substring(11, 16)),
+        //  console.log("x" ,message.text.substring(3, 7))
         ]
          } 
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
@@ -130,6 +124,8 @@ const ChatFeed = (props) => {
 
   return (
    <div className="chat-feed" style={{  borderColor: test.length === online_nb? '#A7DF73' : null, borderStyle : 'solid', borderRadius: '30px' }} onKeyPress={(e) => handler(e)}>
+     { root.style.setProperty('--mouse-x', null),
+       root.style.setProperty('--mouse-y',null)}
       <div className="chat-title-container"style= { { backgroundColor: test.length === 4?'#008FFF' : test.length ===3? '#3CA3F3' :  test.length ===2? '#7DC4FB' : '#C8DDED' }}>
         <progress color="red" id="file" value={online_nb} max={test.length}> online_nb/test.length % </progress>
         <div className="chat-title">{chat?.title}</div>
