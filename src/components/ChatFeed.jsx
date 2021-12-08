@@ -106,8 +106,8 @@ const ChatFeed = (props) => {
             root.style.setProperty('--width1', 20 + "px"),
             root.style.setProperty('--height1', 20 + "px")
            ] : [
-            root.style.setProperty('--mouse-x2', 333 + "px"),
-            root.style.setProperty('--mouse-y2', 300 + "px"),
+            root.style.setProperty('--mouse-x2', message.text.substring(3, 7) - 480  + "px"),
+            root.style.setProperty('--mouse-y2',  message.text.substring(11, 16) + "px"),
             root.style.setProperty('--width2', 20 + "px"),
             root.style.setProperty('--height2', 20 + "px")
            ]
