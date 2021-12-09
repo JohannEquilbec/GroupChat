@@ -16,7 +16,10 @@ const TheirMessage = ({ lastMessage, message }) => {
         {isFirstMessageByUser && (
           <div
             className="message-avatar"
-            style={{ backgroundImage: message.sender && `url(${message.sender.avatar})` }}
+            style={{ borderStyle : 'solid', borderRadius: '30px' , borderColor:  message.sender.username==="Johann"? 'red':
+            message.sender.username==="Nicolas"? 'green': 
+            message.sender.username==="Camille"? 'palevioletred' : null,
+            backgroundImage: message.sender && `url(${message.sender.avatar})` }}
           />
         )}
         {message.attachments && message.attachments.length > 0
