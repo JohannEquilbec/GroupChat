@@ -33,8 +33,7 @@ const TheirMessage = ({ lastMessage, message }) => {
             <p style={{ marginRight: '1px'}}>
              {dateMessage >= dateAjd ? message.created.substring(10, 16) : dateMessage=message.created.substring(5, 10) }
             </p>,
-            <br />,
-            <p> {message.text}&nbsp;likes</p>
+            <br />
           ]
           : [
             <div className="message" style={{ float: 'left', backgroundColor: dateMessage === dateAjd ?'#488f31' : dateMessage+1 === dateAjd ? '#7eaa6b' :  '#afc5a4'

@@ -62,6 +62,7 @@ const ChatFeed = (props) => {
       className="read-receipt"
       style={{
         float: isMyMessage ? 'right' : 'left',
+        marginRight : isMyMessage ? '50px': '1px' ,  
         backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
       }}
     />
@@ -106,10 +107,11 @@ const ChatFeed = (props) => {
           {message.text.substring(0, 3) !== "x :" ? 
           <div className="message-block">
             {isMyMessage
-              ? <MyMessage message={message} /> 
+              ? <MyMessage message={message} lastMessage={messages[lastMessageKey]} /> 
               : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
               }
-              {message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()}
+              {//message.attachments.length > 0 ? <button onClick={() => handleClick(message)} type="button"> LIKE ! </button> : console.log ()
+              }
           </div> :
           message.sender.username==="Johann" && Number(message.created.substring(14, 16)) === dateMin?
            [
