@@ -62,7 +62,7 @@ const ChatFeed = (props) => {
       className="read-receipt"
       style={{
         float: isMyMessage ? 'right' : 'left',
-        marginRight : isMyMessage ? '50px': '1px' ,  
+        marginRight : isMyMessage ? '1px': '1px' ,  
         backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
       }}
     />
