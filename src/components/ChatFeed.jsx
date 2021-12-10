@@ -62,7 +62,7 @@ const ChatFeed = (props) => {
       className="read-receipt"
       style={{
         float: isMyMessage ? 'right' : 'left',
-        marginRight : isMyMessage ? '50px': '1px' ,  
+        marginRight : isMyMessage ? '1px': '1px' ,  
         backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
       }}
     />
@@ -117,7 +117,7 @@ const ChatFeed = (props) => {
           message.sender.username==="Johann" && Number(message.created.substring(14, 16)) === dateMin?
            [
             console.log( pingInfo = message.text.split('/')),
-           // console.log(pingInfo),
+            //console.log(pingInfo),
             root.style.setProperty('--mouse-x', pingInfo[0].substring(3, 9) - 480 + "px"),
             root.style.setProperty('--mouse-y', pingInfo[1].substring(4, 8) + "px"),
             root.style.setProperty('--width1', 20 + "px"),
