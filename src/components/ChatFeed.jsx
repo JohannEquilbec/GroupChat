@@ -43,7 +43,7 @@ const ChatFeed = (props) => {
   //root.style.setProperty('--mouse-y', e.clientY + "px");
   //console.log(e.clientY, e.clientX);
   if (aDown === true){
-  var text = "x : " + e.clientX + " y : " + e.clientY
+  var text = "x : " + e.clientX + "/ y : " + e.clientY
   sendMessage(creds, chat.id, { text });
   aDown = false ;
   }
@@ -93,6 +93,7 @@ const ChatFeed = (props) => {
 
   var dateAjd = new Date();
   var dateMin = Number(dateAjd.getMinutes());
+  var pingInfo;
 
   const renderMessages = () => {
     const keys = Object.keys(messages);
@@ -115,20 +116,27 @@ const ChatFeed = (props) => {
           </div> :
           message.sender.username==="Johann" && Number(message.created.substring(14, 16)) === dateMin?
            [
-            root.style.setProperty('--mouse-x', message.text.substring(3, 7) - 480 + "px"),
-            root.style.setProperty('--mouse-y', message.text.substring(11, 16)+ "px"),
+            console.log( pingInfo = message.text.split('/')),
+           // console.log(pingInfo),
+            root.style.setProperty('--mouse-x', pingInfo[0].substring(3, 9) - 480 + "px"),
+            root.style.setProperty('--mouse-y', pingInfo[1].substring(4, 8) + "px"),
             root.style.setProperty('--width1', 20 + "px"),
             root.style.setProperty('--height1', 20 + "px")
-           ] : message.sender.username==="Nicolas" && Number(message.created.substring(14, 16)) === dateMin? [
-            root.style.setProperty('--mouse-x2', message.text.substring(3, 7) - 480  + "px"),
-            root.style.setProperty('--mouse-y2',  message.text.substring(11, 16) + "px"),
+           ] 
+           : message.sender.username==="Nicolas" && Number(message.created.substring(14, 16)) === dateMin? 
+           [
+            console.log(pingInfo = message.text.split('/')),
+            root.style.setProperty('--mouse-x2', pingInfo[0].substring(3, 9) - 480  + "px"),
+            root.style.setProperty('--mouse-y2', pingInfo[1].substring(4, 8)+ "px"),
             root.style.setProperty('--width2', 20 + "px"),
             root.style.setProperty('--height2', 20 + "px")
            ]
            : message.sender.username==="Camille" && Number(message.created.substring(14, 16)) === dateMin ?
            [
-            root.style.setProperty('--mouse-x3', message.text.substring(3, 7) - 480  + "px"),
-            root.style.setProperty('--mouse-y3',  message.text.substring(11, 16) + "px"),
+            console.log(pingInfo = message.text.split('/')),
+            //console.log(pingInfo[0].substring(3, 9), pingInfo[1].substring(4, 8)),
+            root.style.setProperty('--mouse-x3', pingInfo[0].substring(3, 9) - 480  + "px"),
+            root.style.setProperty('--mouse-y3', pingInfo[1].substring(4, 8) + "px"),
             root.style.setProperty('--width3', 20 + "px"),
             root.style.setProperty('--height3', 20 + "px")
            ]
