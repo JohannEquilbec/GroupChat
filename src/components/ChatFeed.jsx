@@ -82,11 +82,16 @@ const ChatFeed = (props) => {
    //window.location.reload(false);
   }
 
+  const startDraw = () => {
+    console.log("draw");
+  }
+
   const startCall = () => {
     console.log("call");
   }
 
   const startVideoCall = () => {
+    window.location = "http://localhost:3002";
     console.log("video");
   }
 
@@ -172,9 +177,10 @@ const ChatFeed = (props) => {
         <div className="chat-subtitle">
           {chat.people.map((person) => ` ${person.person.username}`)}
         </div>
-        <div className="chat-call-buttons">
-          <button className="ce-call-button" type="button" onClick={() => startCall()}><img className="ce-call-icon" alt="Call" src="call-icon.png"></img></button>
-          <button className="ce-call-button" type="button" onClick={() => startVideoCall()}><img className="ce-call-icon" alt="Video" src="video-icon.png"></img></button>
+        <div className="chat-buttons">
+          <button className="ce-chat-button" type="button" onClick={() => startDraw()}><img className="ce-chat-icon" alt="Draw" src="draw-icon.png"></img></button>
+          <button className="ce-chat-button" type="button" onClick={() => startCall()}><img className="ce-chat-icon" alt="Call" src="call-icon.png"></img></button>
+          <button className="ce-chat-button" type="button" onClick={() => startVideoCall()}><img className="ce-chat-icon" alt="Video" src="video-icon.png"></img></button>
         </div>
       </div>
       <div className="chat-messages-container">

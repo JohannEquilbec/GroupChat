@@ -93,18 +93,18 @@
     bottom: 1px;
   }
   
-  .ce-call-button {
+  .ce-chat-button {
     border-radius: 30px !important;
     background-color: #356ab9 !important;
     position: relative;
     margin-left: 15px;
-    width: 60px;
-    line-height: 40px;
+    width: 70px;
+    line-height: 60px;
   }
 
-  .ce-call-icon {
-    width: 22px;
-    height: 22px;
+  .ce-chat-icon {
+    width: 30px;
+    height: 30px;
     margin-left: auto;
     margin-right: auto;
     display: block !important;
@@ -207,10 +207,10 @@
     padding-top: 4px;
   }
 
-  .chat-call-buttons{
+  .chat-buttons{
     text-align:center;
     position: absolute; /* pas sur pour le absolute ici*/
-    top: 45px;
+    top: 42px;
     left: auto; right: 30px;
     /*the same margin which is every button have, it is for small screen, and if you have many buttons.*/
   }
