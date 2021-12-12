@@ -28,7 +28,7 @@ const MyMessage = ({ lastMessage, message }) => {
           style={{ float: 'right' , marginRight: isFirstMessageByUser? '1px' : '59px'}}
         />
         <p style={{ float: 'right', marginRight: '1px'}}>
-         {dateMessage = dateAjd ? [Number(message.created.substring(10, 13) )+1,message.created.substring(13, 16) ]:dateMessage=message.created.substring(5, 10) }
+         {dateMessage >= dateAjd ? [Number(message.created.substring(10, 13) )+1,message.created.substring(13, 16) ]:dateMessage=message.created.substring(5, 10) }
         </p>
         </div>
       ]; 
